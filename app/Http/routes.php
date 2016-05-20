@@ -15,7 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('categoria', 'CategoriaController');
+Route::group(['prefix' => 'admin'], function() {
+    Route::resource('categoria', 'CategoriaController');
+});
 
 /*Route::get('contacto', function () {
     return view('contacto');

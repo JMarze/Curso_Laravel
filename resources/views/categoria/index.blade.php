@@ -1,28 +1,26 @@
-<!DOCTYPE html>
-<html lang="es">
-    <head>
-        <title>Categorias</title>
-        <meta charset="utf-8"/>
-    </head>
+@extends('template.main')
+@section('title', 'Categorias')
+@section('principal', 'Listado de Categorias')
 
-    <body>
-        <h1>Listado de Categorias</h1>
-        <hr/>
+@section('contenido')
+<a href="{{ route('admin.categoria.create') }}">Agregar</a>
 
-        <a href="{{ route('categoria.create') }}">Agregar</a>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>NOMBRE</th>
+        <th>OPERACIONES</th>
+    </tr>
 
-        <table>
-            <tr>
-                <th>ID</th>
-                <th>NOMBRE</th>
-            </tr>
-
-            @foreach($categorias as $categoria)
-            <tr>
-                <td>{{ $categoria->id }}</td>
-                <td>{{ $categoria->nombre }}</td>
-            </tr>
-            @endforeach
-        </table>
-    </body>
-</html>
+    @foreach($categorias as $categoria)
+    <tr>
+        <td>{{ $categoria->id }}</td>
+        <td>{{ $categoria->nombre }}</td>
+        <td>
+            <a href="{{ route('admin.categoria.edit', $categoria->id) }}">Editar</a>
+            <a href="{{ route('admin.categoria.show', $categoria->id) }}">Eliminar</a>
+        </td>
+    </tr>
+    @endforeach
+</table>
+@endsection

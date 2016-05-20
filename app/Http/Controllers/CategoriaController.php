@@ -30,7 +30,7 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-        return "Aqui es donde debemos crear";
+        return view('categoria.create');
     }
 
     /**
@@ -41,7 +41,10 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $categoria = new Categoria();
+        $categoria->nombre = $request['nombre'];
+        $categoria->save();
+        return redirect()->route('admin.categoria.index');
     }
 
     /**
@@ -63,7 +66,8 @@ class CategoriaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $categoria = Categoria::find($id);
+        return view('categoria.edit')->with('categoria', $categoria);
     }
 
     /**
@@ -75,7 +79,10 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $categoria = Categoria::find($id);
+        $categoria->nombre = $request['nombre'];
+        $categoria->update();
+        return redirect()->route('admin.categoria.index');
     }
 
     /**
