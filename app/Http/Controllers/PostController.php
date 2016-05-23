@@ -6,10 +6,9 @@ use Illuminate\Http\Request;
 
 use Blog\Http\Requests;
 
-// Modelo(s) a usar en el controlador
-use Blog\Categoria;
+use Blog\Post;
 
-class CategoriaController extends Controller
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +17,8 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        $categorias = Categoria::get();
-
-        return view('categoria.index')->with('categorias', $categorias);
+        $posts = Post::orderBy('created_at', 'ASC')->get();
+        return view('post.index')->with('posts', $posts);
     }
 
     /**
@@ -30,7 +28,7 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-        return view('categoria.create');
+        //
     }
 
     /**
@@ -41,10 +39,7 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        $categoria = new Categoria();
-        $categoria->nombre = $request['nombre'];
-        $categoria->save();
-        return redirect()->route('admin.categoria.index');
+        //
     }
 
     /**
@@ -55,7 +50,7 @@ class CategoriaController extends Controller
      */
     public function show($id)
     {
-        // Para mostrar lo que se va a eliminar
+        //
     }
 
     /**
@@ -66,8 +61,7 @@ class CategoriaController extends Controller
      */
     public function edit($id)
     {
-        $categoria = Categoria::find($id);
-        return view('categoria.edit')->with('categoria', $categoria);
+        //
     }
 
     /**
@@ -79,10 +73,7 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $categoria = Categoria::find($id);
-        $categoria->nombre = $request['nombre'];
-        $categoria->update();
-        return redirect()->route('admin.categoria.index');
+        //
     }
 
     /**
@@ -93,7 +84,6 @@ class CategoriaController extends Controller
      */
     public function destroy($id)
     {
-        // Para procesar la eliminación
-        // Método destroy()
+        //
     }
 }

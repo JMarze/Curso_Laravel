@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'admin'], function() {
     Route::resource('categoria', 'CategoriaController');
+    Route::resource('post', 'PostController');
 });
 
 /*Route::get('contacto', function () {
@@ -53,3 +54,7 @@ Route::put('metodos', function(){
 /*Route::get('nombre/{nombre?}/apellido/{apellido}', function ($nombre = "Marcelo", $apellido) {
     return "El nombre es: " . $nombre;
 });*/
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
