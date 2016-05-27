@@ -16,7 +16,7 @@ class Post extends Model
     // Cambiamos el Auto Increment
     public $incrementing = false;
 
-    protected $fillable = ['codigo', 'titulo', 'contenido', 'publicado'];
+    protected $fillable = ['codigo', 'titulo', 'contenido', 'publicado', 'categoria_id'];
 
     // Campos de fechas (Timestamps)
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
