@@ -8,8 +8,13 @@ use Blog\Http\Requests;
 
 use Blog\Post;
 
+use Carbon\Carbon;
+
 class PostController extends Controller
 {
+    public function __construct(){
+        Carbon::setLocale('es');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +22,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('created_at', 'ASC')->get();
+        $posts = Post::orderBy('created_at', 'ASC')->paginate(5);
         return view('post.index')->with('posts', $posts);
     }
 

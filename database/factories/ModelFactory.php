@@ -22,7 +22,7 @@ $factory->define(Blog\User::class, function (Faker\Generator $faker) {
 
 $factory->define(Blog\Categoria::class, function(Faker\Generator $faker) {
     return [
-        'nombre' => $faker->sentence(1, true);
+        'nombre' => $faker->sentence(1, true),
     ];
 });
 
