@@ -5,17 +5,17 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">Agregar Post</div>
+                <div class="panel-heading">Editar Post</div>
 
                 <div class="panel-body">
 
                 @include('post.partial.validation')
 
-                {!! Form::open(['route' => 'admin.post.store', 'method' => 'POST']) !!}
+                {!! Form::model($post, ['route' => ['admin.post.update', $post->codigo], 'method' => 'PUT']) !!}
 
                 @include('post.partial.form')
 
-                <input type="submit" value="Registrar Post" class="btn btn-success"/>
+                <input type="submit" value="Editar Post" class="btn btn-warning"/>
 
                 {!! Form::close() !!}
                 </div>

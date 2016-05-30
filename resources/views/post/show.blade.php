@@ -5,17 +5,15 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">Agregar Post</div>
+                <div class="panel-heading">Eliminar Post</div>
 
                 <div class="panel-body">
 
-                @include('post.partial.validation')
+                {!! Form::model($post, ['route' => ['admin.post.destroy', $post->codigo], 'method' => 'DELETE']) !!}
 
-                {!! Form::open(['route' => 'admin.post.store', 'method' => 'POST']) !!}
+                <h2>¿Esta seguro de eliminar el Post: <i>{{ $post->titulo }}</i>?</h2>
 
-                @include('post.partial.form')
-
-                <input type="submit" value="Registrar Post" class="btn btn-success"/>
+                <input type="submit" value="Eliminar Post" class="btn btn-danger"/>
 
                 {!! Form::close() !!}
                 </div>

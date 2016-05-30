@@ -61,7 +61,9 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::find($id);
+
+        return view('post.show')->with('post', $post);
     }
 
     /**
@@ -72,7 +74,11 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $categorias = Categoria::orderBy('nombre', 'ASC')->lists('nombre', 'id');
+
+        $post = Post::find($id);
+
+        return view('post.edit')->with('categorias', $categorias)->with('post', $post);
     }
 
     /**
@@ -82,9 +88,13 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PostRequest $request, $id)
     {
-        //
+        $post = Post::find($id);
+        $post->fill($request->all());
+        $post->update();
+
+        return redirect()->route('admin.post.index');
     }
 
     /**
@@ -95,6 +105,10 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+
+        $post->delete();
+
+        return redirect()->route('admin.post.index');
     }
 }
