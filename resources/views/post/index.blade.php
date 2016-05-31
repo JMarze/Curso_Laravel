@@ -18,6 +18,7 @@
                             <th>Fecha de creación</th>
                             <th>Última modificación</th>
                             <th>Publicado</th>
+                            <th>Imagen</th>
                             <th></th>
                         </tr>
 
@@ -33,6 +34,13 @@
                                 SI
                                 @else
                                 NO
+                                @endif
+                            </td>
+                            <td>
+                                @if($item->imagen != null && $item->imagen != '')
+                                {{ $item->imagen }}
+                                @else
+                                Sin imagen
                                 @endif
                             </td>
                             <td>

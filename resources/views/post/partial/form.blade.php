@@ -14,6 +14,11 @@
 </div>
 
 <div class="form-group">
+    {!! Form::label('imagen', 'Imagen', []) !!}
+    {!! Form::file('imagen', null, ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group">
     {!! Form::label('categoria_id', 'Categoría', []) !!}
     {!! Form::select('categoria_id', $categorias, null, ['placeholder' => 'Seleccione una categoría...', 'class' => 'form-control']) !!}
 </div>

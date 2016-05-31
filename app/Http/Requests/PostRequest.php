@@ -28,6 +28,7 @@ class PostRequest extends Request
             'codigo' => 'required|string|size:10|unique:posts,codigo,'.$id.',codigo',
             'titulo' => 'required|string|max:100|min:2',
             'contenido' => 'required|min:2',
+            /*'imagen' => 'image',*/
             'categoria_id' => 'required',
         ];
     }
