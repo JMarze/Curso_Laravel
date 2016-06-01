@@ -20,6 +20,9 @@ Route::group(['prefix' => 'admin'], function() {
     Route::resource('post', 'PostController');
 });
 
+// Ruta para acceder a los archivos de imagen (Store)
+Route::get('post/{nombreImagen}', 'PostController@getImagen')->name('post.imagen');
+
 /*Route::get('contacto', function () {
     return view('contacto');
 });*/

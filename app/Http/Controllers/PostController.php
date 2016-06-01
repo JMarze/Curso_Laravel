@@ -12,6 +12,8 @@ use Blog\Categoria;
 
 use Carbon\Carbon;
 
+use Illuminate\Http\Response;
+
 class PostController extends Controller
 {
     public function __construct(){
@@ -47,8 +49,14 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
-        $post = new Post($request->all());
-        $post->save();
+        try{
+            $post = new Post($request->all());
+            $post->save();
+
+            flash()->success('Se agregó un nuevo post: '.$post->titulo);
+        }catch(\Exception $ex){
+            flash()->error('Ocurrió un problema al agregar...'.$ex->getMessage());
+        }
 
         return redirect()->route('admin.post.index');
     }
@@ -110,5 +118,10 @@ class PostController extends Controller
         $post->delete();
 
         return redirect()->route('admin.post.index');
+    }
+
+    public function getImagen($nombreImagen){
+        $imagen = \Storage::disk('local')->get($nombreImagen);
+        return new Response($imagen, 200);
     }
 }

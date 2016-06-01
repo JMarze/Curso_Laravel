@@ -38,7 +38,7 @@
                             </td>
                             <td>
                                 @if($item->imagen != null && $item->imagen != '')
-                                {{ $item->imagen }}
+                                <img src="{{ route('post.imagen', ['nombreImagen' => $item->imagen]) }}" alt="" width="100"/>
                                 @else
                                 Sin imagen
                                 @endif

@@ -11,7 +11,7 @@
 
                 @include('post.partial.validation')
 
-                {!! Form::model($post, ['route' => ['admin.post.update', $post->codigo], 'method' => 'PUT']) !!}
+                {!! Form::model($post, ['route' => ['admin.post.update', $post->codigo], 'method' => 'PUT', 'files' => true]) !!}
 
                 @include('post.partial.form')
 
