@@ -47,6 +47,8 @@
                                 <div class="btn-group" role="group">
                                 {!! link_to_route('admin.post.edit', 'Editar', array($item->codigo), ['class' => 'btn btn-warning']) !!}
                                 {!! link_to_route('admin.post.show', 'Eliminar', array($item->codigo), ['class' => 'btn btn-danger']) !!}
+
+                                {!! link_to_route('post.reporte', 'Descargar Reporte', array($item->codigo), ['class' => 'btn btn-primary']) !!}
                                 </div>
                             </td>
                         </tr>

@@ -9,6 +9,7 @@ use Blog\Http\Requests\PostRequest;
 
 use Blog\Post;
 use Blog\Categoria;
+use Blog\Tag;
 
 use Carbon\Carbon;
 
@@ -38,7 +39,8 @@ class PostController extends Controller
     public function create()
     {
         $categorias = Categoria::orderBy('nombre', 'ASC')->lists('nombre', 'id');
-        return view('post.create')->with('categorias', $categorias);
+        $tags = Tag::orderBy('nombre', 'ASC')->lists('nombre', 'id');
+        return view('post.create')->with('categorias', $categorias)->with('tags', $tags);
     }
 
     /**

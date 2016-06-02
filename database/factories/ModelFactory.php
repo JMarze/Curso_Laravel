@@ -26,6 +26,12 @@ $factory->define(Blog\Categoria::class, function(Faker\Generator $faker) {
     ];
 });
 
+$factory->define(Blog\Tag::class, function(Faker\Generator $faker) {
+    return [
+        'nombre' => $faker->sentence(1, true),
+    ];
+});
+
 $factory->define(Blog\Post::class, function (Faker\Generator $faker) {
     return [
         'codigo' => str_random(10),

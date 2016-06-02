@@ -24,6 +24,11 @@
 </div>
 
 <div class="form-group">
+    {!! Form::label('tags', 'Tags', []) !!}
+    {!! Form::select('tags[]', $tags, null, ['class' => 'form-control', 'multiple' => 'multiple']) !!}
+</div>
+
+<div class="form-group">
     {!! Form::label('publicado', '¿Publicado?', []) !!}
     {!! Form::select('publicado', [true => 'SI', false => 'NO'], true, ['placeholder' => '¿Post publicado?', 'class' => 'form-control']) !!}
 </div>

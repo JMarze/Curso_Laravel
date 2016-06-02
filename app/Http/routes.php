@@ -23,6 +23,10 @@ Route::group(['prefix' => 'admin'], function() {
 // Ruta para acceder a los archivos de imagen (Store)
 Route::get('post/{nombreImagen}', 'PostController@getImagen')->name('post.imagen');
 
+// PDF
+Route::get('post/{post}/reporte', 'PdfController@reporte')->name('post.reporte');
+
+
 /*Route::get('contacto', function () {
     return view('contacto');
 });*/
