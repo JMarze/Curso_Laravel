@@ -10,6 +10,11 @@ use Blog\Post;
 
 class PdfController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('admin');
+    }
+
     public function reporte($codigoPost){
         $post = Post::find($codigoPost);
 

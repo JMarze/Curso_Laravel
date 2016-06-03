@@ -19,6 +19,7 @@
                             <th>Última modificación</th>
                             <th>Publicado</th>
                             <th>Imagen</th>
+                            <th>Tags</th>
                             <th></th>
                         </tr>
 
@@ -42,6 +43,13 @@
                                 @else
                                 Sin imagen
                                 @endif
+                            </td>
+                            <td>
+                                <ul>
+                                @foreach($item->tags as $tag)
+                                    <li>{{ $tag->nombre }}</li>
+                                @endforeach
+                                </ul>
                             </td>
                             <td>
                                 <div class="btn-group" role="group">

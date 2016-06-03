@@ -55,6 +55,10 @@ class PostController extends Controller
             $post = new Post($request->all());
             $post->save();
 
+            foreach($request['tags'] as $tag){
+                $post->tags()->attach($tag);
+            }
+
             flash()->success('Se agregó un nuevo post: '.$post->titulo);
         }catch(\Exception $ex){
             flash()->error('Ocurrió un problema al agregar...'.$ex->getMessage());
@@ -85,10 +89,15 @@ class PostController extends Controller
     public function edit($id)
     {
         $categorias = Categoria::orderBy('nombre', 'ASC')->lists('nombre', 'id');
+        $tags = Tag::orderBy('nombre', 'ASC')->lists('nombre', 'id');
 
         $post = Post::find($id);
 
-        return view('post.edit')->with('categorias', $categorias)->with('post', $post);
+        //$tagsId = $post->tags()->lists('id');// Pendiente
+
+        return view('post.edit')->with('categorias', $categorias)
+            ->with('post', $post)
+            ->with('tags', $tags);
     }
 
     /**
@@ -104,6 +113,13 @@ class PostController extends Controller
         $post->fill($request->all());
         $post->update();
 
+        $post->tags()->detach();
+        foreach($request['tags'] as $tag){
+            $post->tags()->attach($tag);
+        }
+
+        //$post->tags()->sync([1,2,3,4,5]);
+
         return redirect()->route('admin.post.index');
     }
 
@@ -116,6 +132,8 @@ class PostController extends Controller
     public function destroy($id)
     {
         $post = Post::find($id);
+
+        //$post->tags()->detach();
 
         $post->delete();
 

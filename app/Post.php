@@ -30,7 +30,7 @@ class Post extends Model
 
     // Relationships N:N
     public function tags(){
-        return $this->belongsToMany('Blog\Tag');
+        return $this->belongsToMany('Blog\Tag', 'post_tag', 'post_codigo', 'tag_id');
     }
 
     // Mutator
